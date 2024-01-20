@@ -9,12 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import page.base.Base;
 
 public class D_CheckoutandPayment {
     private final WebDriver driver;
 
-    public D_CheckoutandPayment(WebDriver driver) {
-        this.driver = driver;
+    public D_CheckoutandPayment() {
+        this.driver= Base.driver;
     }
 
     @Given("Go to cart")

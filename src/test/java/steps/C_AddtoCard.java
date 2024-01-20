@@ -7,12 +7,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import page.base.Base;
 
 public class C_AddtoCard {
     private final WebDriver driver;
 
-    public C_AddtoCard(WebDriver driver) {
-        this.driver = driver;
+    public C_AddtoCard() {
+        this.driver= Base.driver;
     }
 
     @Given("From two products select second one")

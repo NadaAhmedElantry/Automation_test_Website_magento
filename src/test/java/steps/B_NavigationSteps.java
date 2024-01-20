@@ -8,13 +8,16 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import page.base.Base;
 
 public class B_NavigationSteps {
-    private final WebDriver driver;
 
-    public B_NavigationSteps(WebDriver driver) {
-        this.driver = driver;
-    }
+    private  WebDriver driver;
+
+
+    public B_NavigationSteps() {
+           this.driver=Base.driver;
+        }
 
     @Given("User write in search bar hot seller")
     public void searchforhotseller()

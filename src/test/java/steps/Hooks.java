@@ -9,19 +9,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import page.base.Base;
 
 public class Hooks {
 
-    private WebDriver driver;
+     WebDriver driver;
 
     @Before(value = "not @excludeSetup")
 
     public void setUp() {
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://magento.softwaretestingboard.com/");
+        Base.launchbrowser();
+        driver=Base.driver;
         WebElement Loginlink = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/a"));
         Loginlink.click();
         driver.findElement(By.id("email")).sendKeys("nad@mail.com");
