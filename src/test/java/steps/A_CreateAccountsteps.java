@@ -27,9 +27,9 @@ public class A_CreateAccountsteps {
     @When("User insert all correct data in fields")
     public void insert_data()
     {
-      driver.findElement(By.id("firstname")).sendKeys("Nada");
+      driver.findElement(By.id("firstname")).sendKeys("NadaFor");
       driver.findElement(By.id("lastname")).sendKeys("Testing");
-      driver.findElement(By.id("email_address")).sendKeys("nad2@mail.com");
+      driver.findElement(By.id("email_address")).sendKeys("nadTest@mail.com");
       driver.findElement(By.id("password")).sendKeys("nAda@246810");
       driver.findElement(By.id("password-confirmation")).sendKeys("nAda@246810");
           WebElement CreateAccount = driver.findElement(By.cssSelector("[title='Create an Account']"));
