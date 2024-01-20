@@ -6,21 +6,26 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import page.base.Base;
 
-public class C_AddtoCard {
-    private final WebDriver driver;
+import java.time.Duration;
 
-    public C_AddtoCard() {
+public class C_AddtoCard {
+
+    private WebDriver driver;
+
+    public C_AddtoCard()
+    {
         this.driver= Base.driver;
     }
 
     @Given("From two products select second one")
     public void selectproduct()
     {
-        WebElement comparelink = driver.findElement(By.cssSelector("a[href='https://magento.softwaretestingboard.com/catalog/product_compare/']"));
-        comparelink.click();
+        driver.get("https://magento.softwaretestingboard.com/catalog/product_compare/");
         WebElement Assertontitle = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[1]/h1/span"));
         Assert.assertTrue(Assertontitle.isDisplayed());
     }
@@ -29,8 +34,8 @@ public class C_AddtoCard {
     public void addtocart() throws InterruptedException {
         WebElement Addtocart = driver.findElement(By.xpath("//*[@id=\"product-comparison\"]/tbody[1]/tr/td[2]/div[3]/div[1]/form/button/span"));
         Addtocart.click();
-        wait(500);
-        WebElement selectsize = driver.findElement(By.xpath("//*[@id=\"option-label-size-143-item-169\"]"));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"option-label-size-143-item-170\"]")));;
+        WebElement selectsize = driver.findElement(By.xpath("//*[@id=\"option-label-size-143-item-170\"]"));
         selectsize.click();
         WebElement selectcolor = driver.findElement(By.xpath("//*[@id=\"option-label-color-93-item-49\"]"));
         selectcolor.click();

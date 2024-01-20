@@ -29,7 +29,6 @@ public class Hooks {
         clickloginbutton.click();
         WebElement checkresult = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[1]/span"));
         Assert.assertTrue(checkresult.isDisplayed());
-
     }
 
     @After

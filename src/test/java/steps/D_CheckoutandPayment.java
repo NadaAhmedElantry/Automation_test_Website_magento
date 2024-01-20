@@ -7,21 +7,27 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import page.base.Base;
 
-public class D_CheckoutandPayment {
-    private final WebDriver driver;
+import java.time.Duration;
 
-    public D_CheckoutandPayment() {
+public class D_CheckoutandPayment {
+
+    private WebDriver driver;
+
+    public D_CheckoutandPayment()
+    {
         this.driver= Base.driver;
     }
 
     @Given("Go to cart")
     public void gotocart()
     {
-        driver.get("https://magento.softwaretestingboard.com/");
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".counter-number")));
         WebElement cart = driver.findElement(By.cssSelector("a[href='https://magento.softwaretestingboard.com/checkout/cart/']"));
         cart.click();
     }
@@ -34,6 +40,7 @@ public class D_CheckoutandPayment {
     @And("Fill data in two steps")
     public void Insertdata()
     {
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='company']")));
         driver.findElement(By.cssSelector("[name='company']")).sendKeys("Company");
         driver.findElement(By.cssSelector("[name='street[0]']")).sendKeys("Address");
         driver.findElement(By.cssSelector("[name='city']")).sendKeys("Cairo");

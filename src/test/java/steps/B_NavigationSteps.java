@@ -9,15 +9,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.base.Base;
+import org.openqa.selenium.interactions.Actions;
+
 
 public class B_NavigationSteps {
 
-    private  WebDriver driver;
+    private WebDriver driver;
 
-
-    public B_NavigationSteps() {
+    public B_NavigationSteps()
+    {
            this.driver=Base.driver;
-        }
+    }
 
     @Given("User write in search bar hot seller")
     public void searchforhotseller()
@@ -37,10 +39,15 @@ public class B_NavigationSteps {
     }
 
     @Then("select products to compare")
-    public void selectproducts()
-    {
+    public void selectproducts() throws InterruptedException {
+        WebElement Hoverinfirstitem = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/div[2]/ol/li[1]/div"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(Hoverinfirstitem).perform();
         WebElement Addtocompare1 = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/div[2]/ol/li[1]/div/div/div[4]/div/div[2]/a[2]"));
         Addtocompare1.click();
+       // wait(2000);
+        WebElement Hoverinsecondtitem = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/div[2]/ol/li[2]/div"));
+        actions.moveToElement(Hoverinsecondtitem).perform();
         WebElement Addtocompare2 = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/div[2]/ol/li[2]/div/div/div[4]/div/div[2]/a[2]"));
         Addtocompare2.click();
         WebElement comparelink = driver.findElement(By.cssSelector("a[href='https://magento.softwaretestingboard.com/catalog/product_compare/']"));
